@@ -7,7 +7,9 @@
  */
 
 import React, {Component} from 'react';
-import {Modal, TouchableHighlight, Alert, Platform, StyleSheet, Text, View} from 'react-native';
+import {Modal, TouchableHighlight, Alert, Platform, Button, StyleSheet, Text, View} from 'react-native';
+import { createAppContainer } from "react-navigation";
+import { createDrawerNavigator } from "react-navigation-drawer";
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -63,35 +65,84 @@ class ModalExample extends Component {
 }
 
 class Header extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.handleClick = this.handleClick.bind(this);
-  // }
-
-  // handleClick(event) {
-  //   this.props.onDelete(this.props.name);
-  // }
+  handleClick() {
+    this.props.navigation.toggleDrawer();
+    //this.props.onDelete(this.props.name);
+  }
 
   render() {
     return (
-      <View style={styles.header}>
-        <Text style={styles.headerText}>{this.props.name}!</Text>
+      <View style={styles.header} onPress={() => this.handleClick()}>
+        <Text style={styles.headerText} >{this.props.name}!</Text>
       </View>
     );
   }
 }
 
-export default class App extends Component<Props> {
+
+class SecondScreen extends Component {
+  static navigationOptions = {
+    drawerLabel: 'Second',
+    title: 'Second',
+  };
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Button
+          title="Go to Home"
+          onPress={() => this.props.navigation.navigate('Home')}
+        />
+      </View>
+    );
+  }
+}
+
+
+class HomeScreen extends Component {
+  static navigationOptions = {
+    drawerLabel: 'Home',
+    title: 'Home',
+  };
+
   render() {
     return (
       <View style={styles.container}>
         <Header name="Just Text really?" />        
         <ModalExample />
         <Text style={styles.instructions}>{instructions}</Text>
+        <Button
+          title="Go to Second"
+          onPress={() => this.props.navigation.navigate('Second')}
+        />
       </View>
     );
   }
 }
+
+const AppNavigator = createDrawerNavigator({
+  Home: {
+    screen: HomeScreen
+  },
+  Second: {
+    screen: SecondScreen
+  }  
+}, {
+  initialRouteName: 'Home',
+  contentOptions: {
+    activeTintColor: '#e91e63',
+  },
+});
+
+const AppContainer = createAppContainer(AppNavigator);
+
+export default class App extends Component<Props> {
+  render() {
+    return <AppContainer style={backgroundColor='blue'} />;
+  }
+}
+
+
 
 const styles = StyleSheet.create({
   container: {
