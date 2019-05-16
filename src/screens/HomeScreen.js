@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Modal, TouchableHighlight, Platform, Button, StyleSheet, Text, View} from 'react-native';
 import ModalExample from './ModalExample';
+import Header from '../components/Header';
+import styles from './styles';
 
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -10,20 +12,6 @@ const instructions = Platform.select({
   });
   
 
-class Header extends Component {
-    handleClick() {
-      this.props.navigation.toggleDrawer();
-      //this.props.onDelete(this.props.name);
-    }
-  
-    render() {
-      return (
-        <View style={styles.header} onPress={() => this.handleClick()}>
-          <Text style={styles.headerText} >{this.props.name}!</Text>
-        </View>
-      );
-    }
-  }
 
 export default class HomeScreen extends Component {
     static navigationOptions = {
@@ -33,47 +21,17 @@ export default class HomeScreen extends Component {
   
     render() {
       return (
-        <View style={styles.container}>
+        <View style={ [styles.mainContainer, { backgroundColor: '#000000' }] }>
           <Header name="Just Text really?" />        
-          <ModalExample />
-          <Text style={styles.instructions}>{instructions}</Text>
-          <Button
-            title="Go to Second"
-            onPress={() => this.props.navigation.navigate('Second')}
-          />
-        </View>
+            <View style={ styles.bodyContainer }>
+            
+            <Text style={ styles.subtitle }>{instructions}</Text>
+            <Button
+                title="Go to Second"
+                onPress={() => this.props.navigation.navigate('Second')}
+            />
+            </View>
+      </View>      
       );
     }
   }
-
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      alignItems: 'stretch',
-      backgroundColor: '#000',
-      flexDirection: 'column',
-      alignContent: 'stretch',
-      justifyContent: 'center',
-    },
-    header : {
-      justifyContent: 'center',
-      flex: 1,
-      alignItems: 'flex-start',
-      alignContent: 'stretch',
-      backgroundColor: '#000',
-      flexDirection: 'row',
-    },
-    headerText: {
-      fontSize: 20,
-      textAlign: 'center',
-      margin: 10,
-      backgroundColor: '#FFF',
-      color: '#000',
-    },
-    instructions: {
-      textAlign: 'center',
-      color: '#FFF',
-      marginBottom: 5,
-    },
-  });
-  

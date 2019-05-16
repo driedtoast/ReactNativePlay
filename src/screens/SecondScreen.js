@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
-import {Modal, TouchableHighlight, Button, StyleSheet, Text, View} from 'react-native';
+import {Modal, TouchableHighlight, Text, View} from 'react-native';
+import Header from '../components/Header';
+import Button from '../components/Button';
+import styles from './styles';
+
 
 export default class SecondScreen extends Component {
     static navigationOptions = {
@@ -9,44 +13,15 @@ export default class SecondScreen extends Component {
   
     render() {
       return (
-        <View style={styles.container}>
-          <Button
+      <View style={ [styles.mainContainer, { backgroundColor: '#000000' }] }>
+          <Header name="Second Screen" />        
+            <View style={ styles.bodyContainer }>         
+            <Button
             title="Go to Home"
             onPress={() => this.props.navigation.navigate('Home')}
           />
-        </View>
+            </View>
+      </View>      
       );
     }
   }
-  
-const styles = StyleSheet.create({
-container: {
-    flex: 1,
-    alignItems: 'stretch',
-    backgroundColor: '#000',
-    flexDirection: 'column',
-    alignContent: 'stretch',
-    justifyContent: 'center',
-},
-header : {
-    justifyContent: 'center',
-    flex: 1,
-    alignItems: 'flex-start',
-    alignContent: 'stretch',
-    backgroundColor: '#000',
-    flexDirection: 'row',
-},
-headerText: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-    backgroundColor: '#FFF',
-    color: '#000',
-},
-instructions: {
-    textAlign: 'center',
-    color: '#FFF',
-    marginBottom: 5,
-},
-});
-  
