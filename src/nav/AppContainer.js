@@ -24,9 +24,5 @@ const AppNavigator = createDrawerNavigator({
   
 const AppContainer = createAppContainer(AppNavigator);
   
-export default class App extends Component<Props> {
-    render() {
-      return <AppContainer style={backgroundColor='blue'} />;
-    }
-  }
+export default AppContainer;
   

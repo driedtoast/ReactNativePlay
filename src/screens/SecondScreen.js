@@ -4,7 +4,6 @@ import Header from '../components/Header';
 import Button from '../components/Button';
 import styles from './styles';
 
-
 export default class SecondScreen extends Component {
     static navigationOptions = {
       drawerLabel: 'Second',

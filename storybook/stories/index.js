@@ -1,6 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { View, Text } from 'react-native';
+import Button from '../../src/components/Button';
+import Header from '../../src/components/Header';
 
 const style = {
   flex: 1,
@@ -21,3 +23,9 @@ storiesOf('CenteredView', module)
       <Text>Hello Storybook</Text>
     </CenteredView>
   ));
+
+storiesOf('Button', module)
+  .add('Just Title', () => (<Button title="Hello" />));
+
+storiesOf('Header', module)
+  .add('Just Name', () => (<Header name="Hello" />));

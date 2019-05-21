@@ -1,2 +1,6 @@
 import { App } from './src';
-export default App;
+
+import StorybookUI from './storybook';
+
+export default  __DEV__ ? StorybookUI : App;
+//export default App;
