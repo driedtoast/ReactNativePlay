@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import {Modal, TouchableHighlight, Platform, Button, StyleSheet, Text, View} from 'react-native';
+import {Modal, TouchableHighlight, Platform, YellowBox, Button, StyleSheet, Text, View} from 'react-native';
 import ModalExample from './ModalExample';
 import Header from '../components/Header';
-import styles from './styles';
+import HamburgerIcon from '../components/HamburgerIcon';
+import styles from '../styles';
+import { createStackNavigator } from 'react-navigation';
 
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -13,12 +15,16 @@ const instructions = Platform.select({
   
 
 
-export default class HomeScreen extends Component {
-    static navigationOptions = {
-      drawerLabel: 'Home',
-      title: 'Home',
-    };
-  
+class HomeScreen extends Component {
+
+    constructor(props) {
+        super(props);
+        YellowBox.ignoreWarnings([
+            'Warning: componentWillMount is deprecated',
+            'Warning: componentWillReceiveProps is deprecated',
+        ]);
+}
+
     render() {
       return (
         <View style={ [styles.mainContainer, { backgroundColor: '#000000' }] }>
@@ -35,3 +41,17 @@ export default class HomeScreen extends Component {
       );
     }
   }
+
+
+
+
+const HomeScreen_StackNavigator = createStackNavigator({
+    Main: {
+      screen: HomeScreen,
+      navigationOptions: ({ navigation }) => ({
+        title: 'Main Screen'        
+      })
+    }
+  }, { headerMode: 'none'});
+
+  export default HomeScreen_StackNavigator;

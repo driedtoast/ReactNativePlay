@@ -1,6 +1,8 @@
 import React, {Component}  from 'react';
 import { TouchableHighlight, Text, StyleSheet} from 'react-native';
-export default class Header extends Component {
+
+
+export default class Button extends Component {
     render() {
       return (
     <TouchableHighlight style={buttonStyles.container} onPress={this.props.onPress}>

@@ -16,7 +16,7 @@ const AppNavigator = createDrawerNavigator({
     }  
   }, {
     initialRouteName: 'Home',
-    drawerPosition: 'right',
+    drawerPosition: 'left',
     contentOptions: {
       activeTintColor: '#e91e63',
     },
