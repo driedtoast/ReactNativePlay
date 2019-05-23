@@ -3,6 +3,7 @@ import { createAppContainer } from "react-navigation";
 import { createDrawerNavigator } from "react-navigation-drawer";
 import HomeScreen from '../screens/HomeScreen';
 import SecondScreen from '../screens/SecondScreen';
+import CardScreen from '../screens/CardScreen';
 
 
 type Props = {};
@@ -13,6 +14,9 @@ const AppNavigator = createDrawerNavigator({
     },
     Second: {
       screen: SecondScreen
+    },
+    Cards: {
+      screen: CardScreen
     }  
   }, {
     initialRouteName: 'Home',

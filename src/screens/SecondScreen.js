@@ -7,11 +7,6 @@ import styles from '../styles';
 import { createStackNavigator } from 'react-navigation';
 
 class SecondScreen extends Component {
-    static navigationOptions = {
-      drawerLabel: 'Second',
-      title: 'Second',
-    };
-  
     render() {
       return (
       <View style={ [styles.mainContainer, { backgroundColor: '#000000' }] }>
@@ -34,7 +29,13 @@ export default SecondScreen_StackNavigator = createStackNavigator({
       screen: SecondScreen,
       navigationOptions: ({ navigation }) => ({
         title: 'Second Screen',
-        headerLeft: <HamburgerIcon navigationProps={navigation} />
+        headerLeft: <HamburgerIcon navigationProps={navigation} />,
+        headerStyle: { 
+            backgroundColor: '#000000',
+            color: 'white',
+            borderBottomWidth: 0
+        }, 
+        headerTintColor: 'transparent'
         // headerStyle: {
         //   backgroundColor: '#FF9800'
         // },
