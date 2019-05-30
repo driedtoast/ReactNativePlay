@@ -4,6 +4,7 @@ import { createDrawerNavigator } from "react-navigation-drawer";
 import HomeScreen from '../screens/HomeScreen';
 import SecondScreen from '../screens/SecondScreen';
 import CardScreen from '../screens/CardScreen';
+import DataListScreen from '../screens/DataListScreen';
 
 
 type Props = {};
@@ -17,6 +18,9 @@ const AppNavigator = createDrawerNavigator({
     },
     Cards: {
       screen: CardScreen
+    }, 
+    DataList: {
+      screen: DataListScreen
     }  
   }, {
     initialRouteName: 'Home',
